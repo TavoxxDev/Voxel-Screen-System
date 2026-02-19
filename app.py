@@ -9,7 +9,7 @@ CORS(app)
 GRID = 64
 FPS_TIMEOUT = 3
 
-GITHUB_USER = "SrBolasGrandes"
+GITHUB_USER = "TavoxxDev"
 REPO = "videos"
 MEDIA_PATH = "videos"
 
