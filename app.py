@@ -42,7 +42,7 @@ def doom_page():
 
 @app.route("/videosList")
 def videos_list():
-    url = f"https://api.github.com/repos/{GITHUB_USER}/{REPO}/contents/{MEDIA_PATH}"
+    url = f"https://api.github.com/repos/{GITHUB_USER}/{REPO}/contents"
     r = requests.get(url).json()
 
     videos = []
