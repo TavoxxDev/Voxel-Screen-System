@@ -10,7 +10,7 @@ GRID = 64
 FPS_TIMEOUT = 3
 
 GITHUB_USER = "SrBolasGrandes"
-REPO = "Camera-Voxel-Roblox"
+REPO = "videos"
 MEDIA_PATH = "videos"
 
 FALLBACK_IMAGE = "https://raw.githubusercontent.com/SrBolasGrandes/Camera-Voxel-Roblox/refs/heads/main/262%20Sem%20T%C3%ADtulo_20260101105003.png"
