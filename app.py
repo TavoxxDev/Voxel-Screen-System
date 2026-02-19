@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from PIL import Image
 import base64, io, time, requests
+import cv2
+import tempfile
 
 app = Flask(__name__)
 CORS(app)
@@ -13,20 +15,61 @@ GITHUB_USER = "TavoxxDev"
 REPO = "videos"
 MEDIA_PATH = "videos"
 
-FALLBACK_IMAGE = "https://raw.githubusercontent.com/SrBolasGrandes/Camera-Voxel-Roblox/refs/heads/main/262%20Sem%20T%C3%ADtulo_20260101105003.png"
-
 last_frame = None
 last_time = 0
 current_audio = None
 
-keys_state = {} 
+keys_state = {}
 
-def load_fallback():
-    global last_frame
-    r = requests.get(FALLBACK_IMAGE)
-    img = Image.open(io.BytesIO(r.content)).convert("RGB")
-    img = img.resize((GRID, GRID))
-    last_frame = list(img.getdata())
+
+fallback_cap = None
+fallback_loaded = False
+fallback_last_frame_time = 0
+fallback_fps = 24
+
+def load_fallback_video():
+    global fallback_cap, fallback_loaded
+
+    if fallback_loaded:
+        return
+
+    url = f"https://raw.githubusercontent.com/{GITHUB_USER}/{REPO}/main/{MEDIA_PATH}/espera.mp4"
+
+    r = requests.get(url)
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".mp4")
+    tmp.write(r.content)
+    tmp.close()
+
+    fallback_cap = cv2.VideoCapture(tmp.name)
+    fallback_loaded = True
+
+def get_fallback_frame():
+    global fallback_cap, fallback_last_frame_time
+
+    if not fallback_loaded:
+        load_fallback_video()
+
+    if fallback_cap is None or not fallback_cap.isOpened():
+        return None
+
+    current_time = time.time()
+
+    if current_time - fallback_last_frame_time < 1 / fallback_fps:
+        return None
+
+    fallback_last_frame_time = current_time
+
+    ret, frame = fallback_cap.read()
+
+    if not ret:
+        fallback_cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        ret, frame = fallback_cap.read()
+
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frame = cv2.resize(frame, (GRID, GRID))
+
+    return frame.reshape(-1, 3).tolist()
+
 
 @app.route("/")
 def camera_page():
@@ -82,8 +125,12 @@ def foto():
 
 @app.route("/cameraGet")
 def camera_get():
+    global last_frame
+
     if last_frame is None or time.time() - last_time > FPS_TIMEOUT:
-        load_fallback()
+        fallback_frame = get_fallback_frame()
+        if fallback_frame:
+            last_frame = fallback_frame
 
     return jsonify(
         ready=True,
