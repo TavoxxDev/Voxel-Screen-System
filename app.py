@@ -13,7 +13,7 @@ GITHUB_USER = "TavoxxDev"
 REPO = "videos"
 MEDIA_PATH = "videos"
 
-FALLBACK_IMAGE = "https://raw.githubusercontent.com/SrBolasGrandes/Camera-Voxel-Roblox/refs/heads/main/262%20Sem%20T%C3%ADtulo_20260101105003.png"
+FALLBACK_IMAGE = "https://raw.githubusercontent.com/TavoxxDev/videos/refs/heads/main/262%20Sem%20T%C3%ADtulo_20260101105003.png"
 
 last_frame = None
 last_time = 0
