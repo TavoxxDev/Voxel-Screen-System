@@ -45,6 +45,8 @@ Você pode usar dois modos:
 
 No Minecraft o sistema funciona de forma diferente.
 
+(Plugin) [https://github.com/TavoxxDev/Voxel-Screen-System/VoxeScreen1-12-2.jar]
+
 Ele utiliza **um plugin de servidor**, não um mod.
 
 Existem **dois comandos disponíveis**:
@@ -152,6 +154,8 @@ You can use two modes:
 In Minecraft the system works differently.
 
 It uses a **server plugin**, not a mod.
+
+(Plugin) [https://github.com/TavoxxDev/Voxel-Screen-System/VoxeScreen1-12-2.jar]
 
 There are **two available commands**:
 
