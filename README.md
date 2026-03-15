@@ -1,18 +1,16 @@
 # Voxel Camera System
 
-## 🇧🇷 Português
+## Português
 
 ### Sobre o projeto
+
 O **Voxel Camera System** é um sistema **open source** criado inteiramente por **tavoxx**.
 
-Talvez você esteja se perguntando: **“O que esse sistema faz?”**
+Este projeto cria uma comunicação entre **Roblox** e **Minecraft** utilizando **requisições HTTP** para transmitir imagens de câmera entre os dois ambientes.
 
-Ele cria uma comunicação entre **Roblox** e **Minecraft** utilizando um sistema de **requisições HTTP** para transmitir imagens ou videos da câmera.  
-(O sistema não utiliza WebSockets.)
+O sistema passou por diversas modificações e melhorias ao longo do desenvolvimento até chegar à versão atual.
 
-Durante o desenvolvimento, o sistema passou por várias modificações e melhorias até chegar à versão atual.
-
-O projeto utiliza as seguintes tecnologias:
+Tecnologias utilizadas no projeto:
 
 - Python
 - Luau (Roblox)
@@ -20,54 +18,60 @@ O projeto utiliza as seguintes tecnologias:
 
 ---
 
-### Tutorial
+## Tutorial
 
-Se você chegou até aqui, provavelmente quer aprender a usar o sistema.
+Se você chegou até aqui, provavelmente quer aprender como utilizar o sistema.
 
 ---
 
-### Roblox
+## Roblox
 
 Depois que o seu site estiver **publicamente acessível**, altere a URL usada no Roblox para:
 
 ```
-URL: {seulink}/cameraGet
+{seulink}/cameraGet
 ```
 
-Você pode usar dois modos:
+Existem dois modos disponíveis:
 
-- `/videos` → usa vídeos enviados para o GitHub
-- `/` → usa a câmera e salva as fotos localmente no sistema
+`/videos`  
+Utiliza vídeos enviados para o repositório do GitHub.
+
+`/`  
+Utiliza a câmera e salva as imagens localmente no sistema.
 
 ---
 
-### Minecraft
+## Minecraft
 
 No Minecraft o sistema funciona de forma diferente.
 
-[Plugin](https://github.com/TavoxxDev/Voxel-Screen-System/blob/main/VoxeScreen1-12-2.jar)
-
 Ele utiliza **um plugin de servidor**, não um mod.
 
-Existem **dois comandos disponíveis**:
+O plugin adiciona **dois comandos principais**.
 
-#### `/telao`
+### Comandos
 
-Executar esse comando irá fornecer ao jogador **um mapa que reproduz o conteúdo vindo de `/cameraGet`**.
+`/telao`
 
-#### `/telao2`
+Este comando fornece ao jogador **um mapa que reproduz o conteúdo vindo do endpoint `/cameraGet`**.
 
-Esse comando funciona de forma semelhante ao primeiro, porém:
+`/telao2`
 
-- Em vez de um mapa
-- Ele cria **uma tela feita com partículas** que reproduz o conteúdo da câmera.
+Este comando cria **uma tela flutuante feita com partículas**, que também reproduz o conteúdo vindo do sistema.
+
+Para remover a tela flutuante de partículas, basta executar o comando:
+
+```
+/telao2 reset
+```
 
 ---
 
-### Configuração do Minecraft
+## Configuração do Minecraft
 
 1. Inicie o servidor normalmente.
-2. Depois **desligue o servidor**.
+2. Depois desligue o servidor.
 3. Vá até a pasta:
 
 ```
@@ -88,39 +92,37 @@ Abra o arquivo:
 config.yml
 ```
 
-Nesse arquivo você encontrará um campo onde deve inserir a **URL do seu sistema**.
+Neste arquivo existe um campo onde você deve inserir a **URL do seu sistema**.
 
-⚠️ Sempre inclua:
+Exemplo:
 
 ```
-https://
+https://seusite.com
 ```
 
-Caso contrário, o sistema **não funcionará**.
+É obrigatório incluir `https://`, caso contrário o sistema não funcionará.
 
-Também existem configurações para o sistema de partículas (`telao2`), como:
+Também existem configurações relacionadas à tela de partículas (`telao2`), como:
 
-- Espaçamento das partículas
+- Espaçamento entre partículas
 - Tamanho da tela
 
-⚠️ O ajuste de tamanho **não funciona na versão 1.12.2**, que é a versão principal suportada pelo plugin.
+Observação:  
+A configuração de tamanho **não funciona na versão 1.12.2**, que é a versão principal suportada pelo plugin.
 
 ---
 
-# 🇺🇸 English
+# English
 
 ## About the Project
 
 The **Voxel Camera System** is an **open-source project** created entirely by **tavoxx**.
 
-You might be wondering: **“What does this system do?”**
+This project creates communication between **Roblox** and **Minecraft** using **HTTP requests** to transmit camera images between the two environments.
 
-It creates communication between **Roblox** and **Minecraft** using **HTTP requests** to transmit camera images.  
-(The system does not use WebSockets.)
+The system went through multiple modifications and improvements during development until reaching its current state.
 
-During development, the system went through multiple modifications and improvements until reaching its current state.
-
-The project uses the following technologies:
+Technologies used in this project:
 
 - Python
 - Luau (Roblox)
@@ -130,22 +132,25 @@ The project uses the following technologies:
 
 ## Tutorial
 
-If you're here, you probably want to learn how to use the system.
+If you are here, you probably want to learn how to use the system.
 
 ---
 
 ## Roblox
 
-Once your website is **publicly available**, change the Roblox URL to:
+Once your website is **publicly accessible**, change the Roblox URL to:
 
 ```
-URL: {yourlink}/cameraGet
+{yourlink}/cameraGet
 ```
 
-You can use two modes:
+Two modes are available:
 
-- `/videos` → uses videos uploaded to GitHub
-- `/` → uses the camera and stores images locally
+`/videos`  
+Uses videos uploaded to the GitHub repository.
+
+`/`  
+Uses the camera and stores images locally in the system.
 
 ---
 
@@ -153,29 +158,32 @@ You can use two modes:
 
 In Minecraft the system works differently.
 
-It uses a **server plugin**, not a mod.
+It uses **a server plugin**, not a mod.
 
-[Plugin](https://github.com/TavoxxDev/Voxel-Screen-System/blob/main/VoxeScreen1-12-2.jar)
+The plugin adds **two main commands**.
 
-There are **two available commands**:
+### Commands
 
-### `/telao`
+`/telao`
 
-This command gives the player **a map that reproduces what is happening in `/cameraGet`**.
+This command gives the player **a map that reproduces the content from the `/cameraGet` endpoint**.
 
-### `/telao2`
+`/telao2`
 
-This command works similarly to the first one, but instead:
+This command creates **a floating screen made of particles** that displays the same camera output.
 
-- Instead of giving a map
-- It creates **a particle screen** that displays the camera output.
+To remove the floating particle screen, simply run the command:
+
+```
+/telao2 reset
+```
 
 ---
 
 ## Minecraft Configuration
 
-1. Start your server normally.
-2. Then **stop the server**.
+1. Start the server normally.
+2. Then stop the server.
 3. Go to the folder:
 
 ```
@@ -190,25 +198,26 @@ VoxelScreen
 
 5. Inside it you will find `.yml` files.
 
-Open:
+Open the file:
 
 ```
 config.yml
 ```
 
-In this file you will find a field where you must insert your **system URL**.
+Inside this file you will find a field where you must insert **your system URL**.
 
-⚠️ Always include:
+Example:
 
 ```
-https://
+https://yourwebsite.com
 ```
 
-Otherwise the system **will not work**.
+You must include `https://`, otherwise the system will not work.
 
-There are also configuration settings for the particle screen (`telao2`), such as:
+There are also configuration options related to the particle screen (`telao2`), such as:
 
 - Particle spacing
 - Screen size
 
-⚠️ The size configuration **does not work in version 1.12.2**, which is the main supported version of the plugin.
+Note:  
+The size configuration **does not work in version 1.12.2**, which is the main supported version of the plugin.
