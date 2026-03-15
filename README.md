@@ -4,7 +4,7 @@
 
 ### Sobre o projeto
 
-O **Voxel Camera System** é um sistema **open source** criado inteiramente por **tavoxx**.
+O **Voxel Camera System** é um sistema **open source** criado inteiramente por mim.
 
 Este projeto cria uma comunicação entre **Roblox** e **Minecraft** utilizando **requisições HTTP** para transmitir imagens de câmera entre os dois ambientes.
 
