@@ -7,7 +7,7 @@ TavoxTavoxTavoxTavoxTavoxTavoxTavoxTavox]]--
 local HttpService = game:GetService("HttpService")
 
 local PART_NAME = "ScreenPart"
-local URL = "https://camera-voxel-roblox.onrender.com/cameraGet"
+local URL = "{yourlink}/cameraGet"
 
 local SIZE = 64
 local PIXEL_SIZE = 3
